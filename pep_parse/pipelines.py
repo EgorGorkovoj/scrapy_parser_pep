@@ -3,8 +3,11 @@ import datetime as dt
 
 from collections import defaultdict
 
+from pep_parse.settings import BASE_DIR
+
 
 class PepParsePipeline:
+    """Класс обработчик. Обрабатывает Items полученный от паука pep."""
     def open_spider(self, spider):
         self.status_amount_dict = defaultdict(int)
 
@@ -15,7 +18,7 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         format_date = dt.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        file_name = f'results/status_summary_{format_date}.csv'
+        file_name = BASE_DIR / f'results/status_summary_{format_date}.csv'
         with open(
             file_name,
             mode='w',

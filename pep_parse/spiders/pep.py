@@ -4,6 +4,10 @@ from pep_parse.items import PepParseItem
 
 
 class PepSpider(scrapy.Spider):
+    """
+    Класс PepSpider - 'паук'.
+    Собирает информацию о актуальных версиях PEP и их статусах.
+    """
     name = 'pep'
     allowed_domains = ['peps.python.org']
     start_urls = ['https://peps.python.org/']
